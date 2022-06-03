@@ -29,9 +29,11 @@ app.get('/api/:name', (request, response) => {
     const rapperName = request.params.name.toLowerCase()
     if(rappers[rapperName]){
         response.json(rappers[rapperName])
+    }else{
+        response.json(rappers['unknown'])
     }
 })
 
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
     console.log(`The server is now running on port ${PORT}! Betta Go Catch It!`)
 })
